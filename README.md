@@ -3,4 +3,4 @@ Projet MVC réalisé dans le cadre de mes études. Contexte: Un laboratoire avec
 
 
 Modèle Conceptuel de Données (MCD) du Projet:
-![Alt text]("https://i.ibb.co/kc57gkM/MCD.png"?raw=true "MCD")
+![alt text](https://i.ibb.co/kc57gkM/MCD.png)
