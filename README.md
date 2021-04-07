@@ -1,7 +1,7 @@
 # Projet MVC - Laboratoire
 
-###Projet MVC réalisé dans le cadre de mes études. 
-[Contexte: Un laboratoire avec différents scientifiques.]
+### Projet MVC réalisé dans le cadre de mes études. 
+> Contexte: Un laboratoire avec différents scientifiques.
 
 
 Modèle Conceptuel de Données (MCD) du Projet:
