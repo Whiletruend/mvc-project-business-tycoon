@@ -3,12 +3,12 @@
 ### Projet MVC réalisé dans le cadre de mes études. 
 > Contexte: Un laboratoire avec différents scientifiques.
 
-
-```**Modèle Conceptuel de Données (MCD) du Projet:**```
+&nbsp;&nbsp;&nbsp;
+```Modèle Conceptuel de Données (MCD) du Projet:```
 ![alt text](https://i.ibb.co/kc57gkM/MCD.png)
 
+&nbsp;&nbsp;&nbsp;
+```Modèle Logique de Données (MLD) du Projet:```
 
-```**Modèle Logique de Données (MLD) du Projet:**```
-
-
-```**Diagramme de Classe (UML):**```
+&nbsp;&nbsp;&nbsp;
+```Diagramme de Classe (UML):```
