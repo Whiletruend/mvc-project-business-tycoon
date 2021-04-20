@@ -1,7 +1,7 @@
-# Projet MVC - Laboratoire
+# Projet MVC - Laboratory Clicker
 
 ### Projet MVC réalisé dans le cadre de mes études. 
-> Contexte: Un laboratoire avec différents scientifiques.
+> Contexte: Un mini-jeu en ligne dont le but est d'avoir le + d'argent.
 
 
 ```Modèle Conceptuel de Données (MCD) du Projet:```
