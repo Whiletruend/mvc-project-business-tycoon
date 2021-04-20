@@ -1,5 +1,5 @@
 <?php
-	require 'app/controler/index-c.php';
+	require 'app/controler/indexControler.php';
 
 	if(isset($_GET['action'])) {
 		$action = $_GET['action'];

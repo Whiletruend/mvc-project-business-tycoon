@@ -2,11 +2,12 @@
     #-> Class 'Index'
     class IndexControler {
         private static $_instance = null;
-        private $test;
+        private $ntrptn;
+        private $table;
         private $activePage;
 
         private function __construct() {
-            $this->test = 'just a simple try';
+            $this->ntrptn = 'ntrptn';
         }
 
         public static function getInstance() {
@@ -19,7 +20,7 @@
 
         public function render() {
             include_once 'app/view/header.php';
-            include_once 'app/view/index-v.php';
+            include_once 'app/view/indexView.php';
         }
     }
 ?>
