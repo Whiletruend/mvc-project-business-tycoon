@@ -14,6 +14,5 @@
 		default:
 			IndexControler::getInstance()->render();
 			break;
-
 	}
 ?>
