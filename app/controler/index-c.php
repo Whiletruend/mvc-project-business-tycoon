@@ -18,6 +18,7 @@
         }
 
         public function render() {
+            include_once 'app/view/header.php';
             include_once 'app/view/index-v.php';
         }
     }
