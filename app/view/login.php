@@ -3,26 +3,9 @@
       $postMail = $_POST['mail_USER'];
       $postPass = $_POST['password_USER'];
 
-      $isValid = 'not';
-      echo 'Mail: ' . $postMail;
-      echo '<br>';
-      echo 'Mot de passe: ' . $postPass;
-      echo '<br>';
+      $login = new LoginControler;
 
-      $userInfos = UserAccess::getUserByMailAndPassword($postMail, $postPass);
-      $dbPassword = $userInfos->getPassword();
-      $dbMail = $userInfos->getMail();
-
-      if(trim($dbPassword) == trim($postPass) && trim($dbMail) == trim($postMail)) {
-        $_SESSION['userMail'] = $postMail;
-        $_SESSION['userPass'] = $postPass;
-
-        header('Location: ?action=home');
-      } else {
-        header('Location: ?action=register');
-      }
-
-      echo $isValid . ' valid';
+      $login->checkLogin($postMail, $postPass);
   } else {
     echo "not connected yet lol";
   }
@@ -36,7 +19,6 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.82.0">
-    <title>Signin Template · Bootstrap v5.0</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 

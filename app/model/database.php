@@ -32,7 +32,7 @@
             return $stat->fetchAll();
         }
 
-        protected static function update($statement, $attributes) {
+        protected static function request($statement, $attributes) {
             $stat = self::getPDO()->prepare($statement);
             $stat->execute($attributes);
         }

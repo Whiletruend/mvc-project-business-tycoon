@@ -4,7 +4,9 @@
       $postName = $_POST['username_USER'];
       $postPass = $_POST['password_USER'];
 
-      $userInfos = UserAccess::getUserByMailAndPassword($postMail, $postPass);
+      $register = new RegisterControler;
+      
+      $register->addAccount($postMail, $postName, $postPass);
   }
 ?>
 
@@ -16,7 +18,6 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.82.0">
-    <title>Signin Template · Bootstrap v5.0</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 

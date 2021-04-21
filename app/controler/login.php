@@ -16,6 +16,33 @@
 
             return self::$_instance;
         }
+
+        public static function checkLogin($postMail, $postPass) {
+            $userInfos = UserAccess::getUserByMailAndPassword($postMail, $postPass);
+
+            if(empty($userInfos)) {
+                header('Location: ?action=register');
+
+                die();
+            }
+
+            $dbPassword = $userInfos->getPassword();
+            $dbMail = $userInfos->getMail();
+
+            if(trim($dbPassword) == trim($postPass) && trim($dbMail) == trim($postMail)) {
+                $_SESSION['userMail'] = $postMail;
+                $_SESSION['userPass'] = $postPass;
+
+                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Parfait !</strong> Connexion effectuée.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+
+                die();
+
+                header('Location: ?action=home');
+            }
+        }
         
         public function render() { 
             $this->activePage = 'login';
