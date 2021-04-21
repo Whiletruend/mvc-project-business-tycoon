@@ -1,5 +1,6 @@
 <?php
-	require 'app/controler/indexControler.php';
+	require 'app/controler/index.php';
+	require 'app/controler/user.php';
 
 	if(isset($_GET['action'])) {
 		$action = $_GET['action'];
@@ -12,7 +13,7 @@
 			echo 'nothing';
 			break;
 		default:
-			IndexControler::getInstance()->render();
+			UserControler::getInstance()->render();
 			break;
 	}
 ?>

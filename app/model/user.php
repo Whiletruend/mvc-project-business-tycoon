@@ -11,6 +11,7 @@
 
         # Functions
         public function __contruct($id, $username, $password, $mail, $money, $is_admin) {
+            $this->id = $id;
             $this->username = $username;
             $this->password = $password;
             $this->mail = $mail;
@@ -18,6 +19,9 @@
             $this->is_admin = $is_admin;
         }
 
+        public function getID() {
+            return $this->id;
+        }
 
         public function getUsername() {
             return $this->username;
