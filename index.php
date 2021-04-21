@@ -1,6 +1,7 @@
 <?php
 	require 'app/controler/index.php';
 	require 'app/controler/user.php';
+	require 'app/controler/signInAccount.php';
 
 	if(isset($_GET['action'])) {
 		$action = $_GET['action'];
@@ -9,8 +10,8 @@
 	}
 
 	switch($action) {
-		case 'test':
-			echo 'nothing';
+		case 'signInAccount':
+			SignAccountControler::getInstance()->render();
 			break;
 		default:
 			UserControler::getInstance()->render();

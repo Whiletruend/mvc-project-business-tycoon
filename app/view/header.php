@@ -27,7 +27,7 @@
         <!-- Base buttons -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+            <a class="nav-link <?= $this->activePage == 'index' ? 'active' : '' ?>" aria-current="page" href=".">Accueil</a>
             </li>
 
             <li class="nav-item">
@@ -55,7 +55,7 @@
                     <i class="fa fa-user fa-lg"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Se connecter</a></li>
+                <li><a class="dropdown-item <?= $this->activePage == 'signInAccount' ? 'active' : '' ?>" href="?action=signInAccount">Se connecter</a></li>
                 <li><a class="dropdown-item" href="#">Créer un compte</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item text-danger" href="#">Déconnexion</a></li>
