@@ -14,5 +14,21 @@
 
             return $collection;
         }
+
+        public static function getUserByMail($mail) {
+            $prepare = self::prepare('SELECT * FROM UTILISATEUR WHERE mail_USER = :mail', array(':mail' => $mail));
+             
+            return new User($prepare[0]['id_USER'], $prepare[0]['username_USER'], $prepare[0]['password_USER'], $prepare[0]['mail_USER'], $prepare[0]['money_USER'], $prepare[0]['isAdmin_USER']);
+        }
+
+        public static function getUserByMailAndPassword($mail, $password) {
+            $prepare = self::prepare('SELECT * FROM UTILISATEUR WHERE mail_USER = :mail AND password_USER = :password', array(':mail' => $mail, ':password' => $password));
+            
+            return new User($prepare[0]['id_USER'], $prepare[0]['username_USER'], $prepare[0]['password_USER'], $prepare[0]['mail_USER'], $prepare[0]['money_USER'], $prepare[0]['isAdmin_USER']);
+        }
+
+        public static function registerUser($mail, $username, $password) {
+            
+        }
     }
 ?>

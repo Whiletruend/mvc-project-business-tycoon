@@ -7,7 +7,7 @@
         private $ex_text;
         private $userList;
         private $activePage;
-
+ 
         private function __construct() {
             $this->ex_text = 'Example Text';
 
@@ -15,7 +15,8 @@
             $this->userList = array();
 
             foreach($collection as $key => $val) {
-                $this->userList[] = array('Username' => $val->getUsername());
+                $this->userList[] = array('Username' => $val->getUsername(),
+                'Password' => $val->getPassword());
             }
         }
 
@@ -25,6 +26,15 @@
             }
 
             return self::$_instance;
+        }
+
+        public function login() {
+            $mail = $_POST['mail_USER'];
+            $pass = $_POST['password_USER'];
+
+            $html = '<h1>' . $mail . ':' . $pass . '</h1>';
+
+            return $html;
         }
 
         public function render() {

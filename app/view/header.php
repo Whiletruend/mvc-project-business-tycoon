@@ -55,8 +55,9 @@
                     <i class="fa fa-user fa-lg"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item <?= $this->activePage == 'signInAccount' ? 'active' : '' ?>" href="?action=signInAccount">Se connecter</a></li>
-                <li><a class="dropdown-item" href="#">Créer un compte</a></li>
+                <li><a class="dropdown-item <?= $this->activePage == 'login' ? 'active' : '' ?>" href="?action=login">Se connecter</a></li>
+                <li><a class="dropdown-item <?= $this->activePage == 'register' ? 'active' : '' ?>" href="?action=register">Créer un compte</a></li>
+             
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item text-danger" href="#">Déconnexion</a></li>
                 <li><hr class="dropdown-divider"></li>
