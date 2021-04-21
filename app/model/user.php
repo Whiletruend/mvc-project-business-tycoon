@@ -1,6 +1,6 @@
 <?php
     #-> Class 'IndexModel'
-    class User {
+    final class User {
         # Variables
         private $id;
         private $username;
@@ -10,7 +10,7 @@
         private $is_admin;
 
         # Functions
-        public function __contruct($id, $username, $password, $mail, $money, $is_admin) {
+        public function __construct($id, $username, $password, $mail, $money, $is_admin) {
             $this->id = $id;
             $this->username = $username;
             $this->password = $password;

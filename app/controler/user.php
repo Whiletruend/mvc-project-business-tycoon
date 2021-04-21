@@ -15,7 +15,7 @@
             $this->userList = array();
 
             foreach($collection as $key => $val) {
-                $this->userList[] = array('Username' => $val['username_USER']);
+                $this->userList[] = array('Username' => $val->getUsername());
             }
         }
 
