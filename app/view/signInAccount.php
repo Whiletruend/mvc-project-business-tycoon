@@ -39,27 +39,21 @@
   <body class="text-center">
 
   <div class='container-lg'>
-    <main class="form-signin">
+    <main class="form-signin w-25 position-absolute top-50 start-50 translate-middle">
         <form>
-            <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <h1 class="h3 mb-3 fw-normal">Se connecter</h1>
 
             <div class="form-floating">
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+            <label for="floatingInput">Adresse Mail</label>
             </div>
             <div class="form-floating">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <label for="floatingPassword">Mot de passe</label>
             </div>
-
-            <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+            <br>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
+            <p class="mt-5 mb-3 text-muted">&copy; Laboratory Clicker 2021–2021</p>
         </form>
     </main>
   </div>

@@ -14,12 +14,5 @@
 
             return $collection;
         }
-
-        public static function signIn($mail, $password) {
-            $password = md5($password);
-            $query = self::query("SELECT * FROM UTILISATEUR WHERE mail_USER='$mail' and password_USER='$password'");
-            $data = mysqli_fetch_array($query);
-            $result = mysqli_num_rows($query);
-        }
     }
 ?>

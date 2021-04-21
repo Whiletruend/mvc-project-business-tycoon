@@ -16,7 +16,7 @@
 
             return self::$_instance;
         }
-
+        
         public function render() {
             $this->activePage = 'signInAccount';
             include_once 'app/view/header.php';
