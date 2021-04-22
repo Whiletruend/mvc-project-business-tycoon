@@ -1,3 +1,4 @@
+<?php if(!isset($_SESSION)) { session_start(); }?>
 <!DOCTYPE HTML>
 <html lang='fr'>
 <head>
@@ -16,9 +17,9 @@
 
 
     <!-- Adding Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Laboratory Clicker</a>
+        <a class="navbar-brand" href="#">Business Tycoon</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,29 +28,20 @@
         <!-- Base buttons -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-            <a class="nav-link <?= $this->activePage == 'index' ? 'active' : '' ?>" aria-current="page" href=".">Accueil</a>
+            <a class="nav-link <?= $this->activePage == 'home' ? 'active' : '' ?>" aria-current="page" href=".">Accueil</a>
             </li>
 
             <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Directeurs</a>
-            </li>
-
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Améliorations</a>
-            </li>
-
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Domaines</a>
-            </li>
-
-            <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Utilisateurs</a>
+            <a class="nav-link <?= $this->activePage == 'business' ? 'active' : '' ?>" aria-current="page" href="?action=business">Affaires</a>
             </li>
         </ul>
 
         <!-- Dropdown Login/Register/Disconnect -->
         <form class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <p class="navbar-text mb-lg-0">Connecté en tant que <strong><?= $_SESSION['username_USER'] ?></strong></p> 
+
+                <!-- Dropdown -->
                 <li class="nav-item dropdown dropstart">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-user fa-lg"></i>

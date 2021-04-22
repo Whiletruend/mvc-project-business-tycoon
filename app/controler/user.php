@@ -15,7 +15,8 @@
             $this->userList = array();
 
             foreach($collection as $key => $val) {
-                $this->userList[] = array('Username' => $val->getUsername(),
+                $this->userList[] = array('Mail' => $val->getMail(),
+                'Username' => $val->getUsername(),
                 'Password' => $val->getPassword());
             }
         }
@@ -27,19 +28,6 @@
 
             return self::$_instance;
         }
-
-        public function login() {
-            $mail = $_POST['mail_USER'];
-            $pass = $_POST['password_USER'];
-
-            $html = '<h1>' . $mail . ':' . $pass . '</h1>';
-
-            return $html;
-        }
-
-        public function render() {
-            include_once 'app/view/header.php';
-            include_once 'app/view/index.php';
-        }
+        
     }
 ?>

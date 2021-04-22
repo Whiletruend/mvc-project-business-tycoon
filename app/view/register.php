@@ -37,32 +37,38 @@
       }
     </style>
   </head>
-  <body class="text-center">
-    <div class='container'> 
-        <main class="form-signin w-25 position-absolute top-50 start-50 translate-middle">
-            <form action='#' method='POST'>
-                <h1 class="h3 mb-3 fw-normal">Créer un compte</h1>
+  <body>
+    <div class="container h-100 w-25">
+      <div class="row align-items-center h-100">
+          <div class="col-12">
+              <div class="h-100 justify-content-center">
+                  <div>
+                    <main class="form-register">
+                      <form action='#' method='POST'>
+                          <center><h1 class="h3 mb-3 fw-normal">Créer un compte</h1></center>
 
-                <div class="form-floating">
-                <input type="email" name='mail_USER' class="form-control" id="floatingInput" placeholder="email">
-                <label for="floatingInput">Adresse Mail</label>
-                </div>
+                          <div class="form-floating">
+                          <input type="email" name='mail_USER' class="form-control" id="floatingInput" placeholder="email">
+                          <label for="floatingInput">Adresse Mail</label>
+                          </div>
 
-                <div class="form-floating">
-                <input type="username" name='username_USER' class="form-control" id="floatingInput" placeholder="username">
-                <label for="floatingInput">Nom d'utilisateur</label>
-                </div>
+                          <div class="form-floating">
+                          <input type="username" name='username_USER' class="form-control" id="floatingInput" placeholder="username">
+                          <label for="floatingInput">Nom d'utilisateur</label>
+                          </div>
 
-                <div class="form-floating">
-                <input type="password" name='password_USER' class="form-control" id="floatingPassword" placeholder="password">
-                <label for="floatingPassword">Mot de passe</label>
-                </div>
-                <br>
-                <button type='submit' class="w-100 btn btn-lg btn-primary">S'enregistrer</button>
-    
-                <p class="mt-5 mb-3 text-muted">&copy; Laboratory Clicker 2021–2021</p>
-            </form>
-        </main>
+                          <div class="form-floating">
+                          <input type="password" name='password_USER' class="form-control" id="floatingPassword" placeholder="password">
+                          <label for="floatingPassword">Mot de passe</label>
+                          </div>
+                          <br>
+                          <button type='submit' class="w-100 btn btn-lg btn-primary">S'enregistrer</button>
+                      </form>
+                    </main>
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
   </body>
 </html>

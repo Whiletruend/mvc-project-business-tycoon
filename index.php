@@ -10,6 +10,8 @@
 		$action = 'default';
 	}
 
+	if(!isset($_SESSION)) { session_start(); }
+
 	switch($action) {
 		case 'login':
 			LoginControler::getInstance()->render();
@@ -18,7 +20,7 @@
 			RegisterControler::getInstance()->render();
 			break;
 		default:
-			UserControler::getInstance()->render();
+			IndexControler::getInstance()->render();
 			break;
 	}
 ?>

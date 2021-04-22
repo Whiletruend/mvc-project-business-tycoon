@@ -24,12 +24,12 @@
 
             if(empty($getInfos)) { 
                 UserAccess::registerUser($postMail, $postUsername, $postPass);
-                
+
                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Parfait !</strong> Votre compte a été créé avec succès. <a href="?action=login" class="alert-link">Se connecter</a>.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
 
-              </div>';
                 die();
             }
 
@@ -37,7 +37,10 @@
             $username = $getInfos['username_USER'];
 
             if((trim($mail) == trim($postMail)) or (trim($username) == trim($postUsername))) {
-                echo '<h1><center>Compte déjà existant</center></h1>';
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Erreur !</strong> Ce compte existe déjà. <a href="?action=login" class="alert-link">Se connecter</a>.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
             }
         }
         
@@ -45,6 +48,7 @@
             $this->activePage = 'register';
             include_once 'app/view/header.php';
             include_once 'app/view/register.php';
+            include_once 'app/view/footer.php';
         }
     }
 ?>
