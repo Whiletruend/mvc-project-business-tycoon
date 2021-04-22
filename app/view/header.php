@@ -71,9 +71,4 @@
     </div>
     </nav>
 </head>
-
-<body>
-</body>
-
-
 </html>

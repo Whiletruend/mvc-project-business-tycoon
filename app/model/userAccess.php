@@ -12,7 +12,7 @@
             }
 
             return $collection;
-        }
+        } 
 
         public static function getUserByMail($mail) {
             $request = self::prepare('SELECT * FROM UTILISATEUR WHERE mail_USER = :mail', array(':mail' => $mail));
