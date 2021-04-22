@@ -3,7 +3,7 @@
       $postMail = $_POST['mail_USER'];
       $postPass = $_POST['password_USER'];
 
-      $login = new LoginControler;
+      $login = new LoginController;
 
       $login->userLogin($postMail, $postPass);
   }

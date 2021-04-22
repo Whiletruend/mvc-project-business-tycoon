@@ -33,15 +33,17 @@
             <a class="nav-link <?= $this->activePage == 'home' ? 'active' : '' ?>" aria-current="page" href=".">Accueil</a>
             </li>
 
-            <li class="nav-item">
-            <a class="nav-link <?= $this->activePage == 'business' ? 'active' : '' ?>" aria-current="page" href="?action=business">Affaires</a>
-            </li>
+            <?php if(UserController::isConnected()) { ?>
+                <li class="nav-item">
+                <a class="nav-link <?= $this->activePage == 'business' ? 'active' : '' ?>" aria-current="page" href="?action=business">Affaires</a>
+                </li>
+            <?php } ?>
         </ul>
 
         <!-- Dropdown Login/Register/Disconnect -->
         <form class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <?php if(UserControler::isConnected()) { ?>
+                <?php if(UserController::isConnected()) { ?>
                     <p class="navbar-text mb-lg-0">Connecté en tant que <strong><?= $_SESSION['username_USER'] ?></strong></p> 
                 <?php } ?>
 
@@ -51,14 +53,14 @@
                     <i class="fa fa-user fa-lg"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <?php if(!UserControler::isConnected()) { ?>
+                <?php if(!UserController::isConnected()) { ?>
                     <li><a class="dropdown-item <?= $this->activePage == 'login' ? 'active' : '' ?>" href="?action=login">Se connecter</a></li>
                     <li><a class="dropdown-item <?= $this->activePage == 'register' ? 'active' : '' ?>" href="?action=register">Créer un compte</a></li>
                 <?php } ?>
                 
-                <?php if(UserControler::isConnected()) { ?>
+                <?php if(UserController::isConnected()) { ?>
                     <li><a class="dropdown-item text-danger" href="./?action=logout">Déconnexion</a></li>
-                    <?php if(UserControler::isAdmin()) { ?>
+                    <?php if(UserController::isAdmin()) { ?>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" href="#">Mode administrateur</a></li> 
                     <?php } ?>

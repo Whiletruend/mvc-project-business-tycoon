@@ -4,7 +4,7 @@
       $postName = $_POST['username_USER'];
       $postPass = $_POST['password_USER'];
 
-      $register = new RegisterControler;
+      $register = new RegisterController;
       
       $register->userAddAccount($postMail, $postName, $postPass);
   }

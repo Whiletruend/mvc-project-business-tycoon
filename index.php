@@ -1,8 +1,9 @@
 <?php
-	require 'app/controler/index.php';
-	require 'app/controler/user.php';
-	require 'app/controler/login.php';
-	require 'app/controler/register.php';
+	require 'app/controller/index.php';
+	require 'app/controller/business.php';
+	require 'app/controller/user.php';
+	require 'app/controller/login.php';
+	require 'app/controller/register.php';
 
 	if(isset($_GET['action'])) {
 		$action = $_GET['action'];
@@ -13,17 +14,20 @@
 	if(!isset($_SESSION)) { session_start(); }
 
 	switch($action) {
+		case 'business':
+			BusinessController::getInstance()->render();
+			break;
 		case 'logout':
-			LoginControler::userLogout();
+			LoginController::userLogout();
 			break;
 		case 'login':
-			LoginControler::getInstance()->render();
+			LoginController::getInstance()->render();
 			break;
 		case 'register':
-			RegisterControler::getInstance()->render();
+			RegisterController::getInstance()->render();
 			break;
 		default:
-			UserControler::getInstance()->render();
+			UserController::getInstance()->render();
 			break;
 	}
 ?>

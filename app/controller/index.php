@@ -1,14 +1,15 @@
 <?php
-    require 'app/model/userAccess.php';
-    require 'app/model/userAuth.php';
-
-    #-> Class 'UserControler'
-    class UserControler {
+    #-> Class 'IndexController'
+    class IndexController {
         private static $_instance = null;
+        private $ex_text;
+        private $table;
         private $activePage;
         private $userRanking;
- 
+
         private function __construct() {
+            $this->ex_text = 'Example Text';
+
             $collection = UserAccess::getUsersDESCRanking();
 
             $this->userRanking = $collection;
@@ -16,22 +17,10 @@
 
         public static function getInstance() {
             if(is_null(self::$_instance)) {
-                self::$_instance = new UserControler();
+                self::$_instance = new IndexController();
             }
 
             return self::$_instance;
-        }
-
-        public static function isConnected() {
-            $connected = UserAuth::isConnected();
-
-            return $connected;
-        }
-
-        public static function isAdmin() {
-            $admin = UserAuth::isAdmin();
-
-            return $admin;
         }
 
         public function render() {

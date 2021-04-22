@@ -21,9 +21,11 @@
 
             if((trim($mail) == trim($postMail)) or (trim($username) == trim($postUsername))) {
                 echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Erreur !</strong> Ce compte existe déjà. <a href="?action=login" class="alert-link">Se connecter</a>.
+                <strong>Erreur !</strong> Ce compte existe déjà.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>';
+
+                die();
             }
         }
 
@@ -32,8 +34,11 @@
             if(!isset($_SESSION)) { session_start(); }
 
             if(empty($userInfos)) {
-                header('Location: ?action=register');
-                
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Erreur !</strong> E-Mail ou mot de passe incorrect. <a href="?action=login" class="alert-link">Recommencer</a>.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+
                 die();
             }
 

@@ -1,5 +1,3 @@
-<title>Index View</title>
-
 <div class="container h-25">
     <div class="row align-items-center h-100">
         <div class="col-12">
