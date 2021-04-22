@@ -1,24 +1,17 @@
 <?php
     require 'app/model/userAccess.php';
+    require 'app/model/userAuth.php';
 
     #-> Class 'UserControler'
     class UserControler {
         private static $_instance = null;
-        private $ex_text;
-        private $userList;
         private $activePage;
+        private $userRanking;
  
         private function __construct() {
-            $this->ex_text = 'Example Text';
+            $collection = UserAccess::getUsersDESCRanking();
 
-            $collection = UserAccess::getAll();
-            $this->userList = array();
-
-            foreach($collection as $key => $val) {
-                $this->userList[] = array('Mail' => $val->getMail(),
-                'Username' => $val->getUsername(),
-                'Password' => $val->getPassword());
-            }
+            $this->userRanking = $collection;
         }
 
         public static function getInstance() {
@@ -28,6 +21,24 @@
 
             return self::$_instance;
         }
-        
+
+        public static function isConnected() {
+            $connected = UserAuth::isConnected();
+
+            return $connected;
+        }
+
+        public static function isAdmin() {
+            $admin = UserAuth::isAdmin();
+
+            return $admin;
+        }
+
+        public function render() {
+            $this->activePage = 'home';
+            include_once 'app/view/header.php';
+            include_once 'app/view/index.php';
+            include_once 'app/view/footer.php';
+        }
     }
 ?>

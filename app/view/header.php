@@ -1,11 +1,13 @@
-<?php if(!isset($_SESSION)) { session_start(); }?>
+<?php 
+    if(!isset($_SESSION)) { session_start(); }
+?>
 <!DOCTYPE HTML>
 <html lang='fr'>
 <head>
     <!-- Base -->
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Laboratory Clicker</title>
+    <title>Business Tycoon - Simulateur de gestion d'entreprise</title>
 
 
     <!-- Adding Bootstrap -->
@@ -39,7 +41,9 @@
         <!-- Dropdown Login/Register/Disconnect -->
         <form class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <p class="navbar-text mb-lg-0">Connecté en tant que <strong><?= $_SESSION['username_USER'] ?></strong></p> 
+                <?php if(UserControler::isConnected()) { ?>
+                    <p class="navbar-text mb-lg-0">Connecté en tant que <strong><?= $_SESSION['username_USER'] ?></strong></p> 
+                <?php } ?>
 
                 <!-- Dropdown -->
                 <li class="nav-item dropdown dropstart">
@@ -47,13 +51,18 @@
                     <i class="fa fa-user fa-lg"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item <?= $this->activePage == 'login' ? 'active' : '' ?>" href="?action=login">Se connecter</a></li>
-                <li><a class="dropdown-item <?= $this->activePage == 'register' ? 'active' : '' ?>" href="?action=register">Créer un compte</a></li>
-             
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item text-danger" href="#">Déconnexion</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item text-danger" href="#">Mode administrateur</a></li>
+                <?php if(!UserControler::isConnected()) { ?>
+                    <li><a class="dropdown-item <?= $this->activePage == 'login' ? 'active' : '' ?>" href="?action=login">Se connecter</a></li>
+                    <li><a class="dropdown-item <?= $this->activePage == 'register' ? 'active' : '' ?>" href="?action=register">Créer un compte</a></li>
+                <?php } ?>
+                
+                <?php if(UserControler::isConnected()) { ?>
+                    <li><a class="dropdown-item text-danger" href="./?action=logout">Déconnexion</a></li>
+                    <?php if(UserControler::isAdmin()) { ?>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="#">Mode administrateur</a></li> 
+                    <?php } ?>
+                <?php } ?>
             </ul>
         </form>
         </div>

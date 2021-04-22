@@ -13,6 +13,9 @@
 	if(!isset($_SESSION)) { session_start(); }
 
 	switch($action) {
+		case 'logout':
+			LoginControler::userLogout();
+			break;
 		case 'login':
 			LoginControler::getInstance()->render();
 			break;
@@ -20,7 +23,7 @@
 			RegisterControler::getInstance()->render();
 			break;
 		default:
-			IndexControler::getInstance()->render();
+			UserControler::getInstance()->render();
 			break;
 	}
 ?>

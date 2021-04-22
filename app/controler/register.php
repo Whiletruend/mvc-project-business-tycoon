@@ -19,29 +19,8 @@
             return self::$_instance;
         }
 
-        public static function addAccount($postMail, $postUsername, $postPass) {
-            $getInfos = UserAccess::getUserByMailOrUsername($postMail, $postUsername);
-
-            if(empty($getInfos)) { 
-                UserAccess::registerUser($postMail, $postUsername, $postPass);
-
-                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Parfait !</strong> Votre compte a été créé avec succès. <a href="?action=login" class="alert-link">Se connecter</a>.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-
-                die();
-            }
-
-            $mail = $getInfos['mail_USER'];
-            $username = $getInfos['username_USER'];
-
-            if((trim($mail) == trim($postMail)) or (trim($username) == trim($postUsername))) {
-                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Erreur !</strong> Ce compte existe déjà. <a href="?action=login" class="alert-link">Se connecter</a>.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-            }
+        public static function userAddAccount($postMail, $postUsername, $postPass) {
+            UserAuth::userAddAccount($postMail, $postUsername, $postPass);
         }
         
         public function render() { 

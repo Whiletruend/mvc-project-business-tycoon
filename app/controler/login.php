@@ -17,36 +17,14 @@
             return self::$_instance;
         }
 
-        public static function checkLogin($postMail, $postPass) {
-            $userInfos = UserAccess::getUserByMailAndPassword($postMail, $postPass);
-            if(!isset($_SESSION)) { session_start(); }
+        public static function userLogin($postMail, $postPass) {
+            UserAuth::userLogin($postMail, $postPass);
+        }
 
-            if(empty($userInfos)) {
-                header('Location: ?action=register');
-                
-                die();
-            }
+        public static function userLogout() {
+            UserAuth::userLogout();
 
-            $dbUsername = $userInfos->getUsername();
-            $dbPassword = $userInfos->getPassword();
-            $dbMail = $userInfos->getMail();
-            $dbMoney = $userInfos->getMoney();
-            $dbAdmin = $userInfos->getIsAdmin();
-
-            if(trim($dbPassword) == trim($postPass) && trim($dbMail) == trim($postMail)) {
-                $_SESSION['username_USER'] = $dbUsername;
-                $_SESSION['password_USER'] = $dbPassword;
-                $_SESSION['mail_USER'] = $dbMail;
-                $_SESSION['money_USER'] = $dbMoney;
-                $_SESSION['isAdmin_USER'] = $dbAdmin;
-
-                header('Location: .');
-
-                /*echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Parfait !</strong> Connexion effectuée.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';*/
-            }
+            header('Location: .');
         }
         
         public function render() { 

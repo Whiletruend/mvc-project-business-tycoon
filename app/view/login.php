@@ -5,7 +5,7 @@
 
       $login = new LoginControler;
 
-      $login->checkLogin($postMail, $postPass);
+      $login->userLogin($postMail, $postPass);
   }
 ?>
 

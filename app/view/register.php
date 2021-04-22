@@ -6,7 +6,7 @@
 
       $register = new RegisterControler;
       
-      $register->addAccount($postMail, $postName, $postPass);
+      $register->userAddAccount($postMail, $postName, $postPass);
   }
 ?>
 
