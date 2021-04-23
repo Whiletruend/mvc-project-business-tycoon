@@ -1,4 +1,7 @@
 <div class="col overflow-auto h-100">
+    <div class='p-1'></div>
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addBusinessMoal">Acheter une affaire</button>
+    <div class='p-2'></div>
     <div class="bg-light border rounded-3 p-3">
         <h2>Vue d'ensemble de vos affaires</h2>
         <p>Sriracha biodiesel taxidermy organic post-ironic, Intelligentsia salvia mustache 90's code editing brunch. Butcher polaroid VHS art party, hashtag Brooklyn deep v PBR narwhal sustainable mixtape swag wolf squid tote bag. Tote bag cronut semiotics, raw denim deep v taxidermy messenger bag. Tofu YOLO Etsy, direct trade ethical Odd Future jean shorts paleo. Forage Shoreditch tousled aesthetic irony, street art organic Bushwick artisan cliche semiotics ugh synth chillwave meditation. Shabby chic lomo plaid vinyl chambray Vice. Vice sustainable cardigan, Williamsburg master cleanse hella DIY 90's blog.</p>
@@ -6,7 +9,84 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 
+<!-- Modal -->
+<body>
+    <div class="modal fade" id="addBusinessMoal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Achat d'une nouvelle entreprise</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class='container'>
+                <div class="row">
+                    <div class="col-10">
+                        <select class="form-select" aria-label="Choisissez le domaine de votre entreprise">
+                            <option selected>Choisissez le domaine de votre entreprise</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class='col-md-auto'>
+                        <button type="button" class="btn btn-info" id="businessDomain_help" data-toggle="tooltip" data-placement="left" title="Le domaine concerne le secteur d'activité dans lequel l'entreprise va travailler. Le choix du domaine influe sur la quantité d'argents gagnés.">
+                            ?
+                        </button>
+                    </div>
+                </div>
+                <div class='p-2'></div>
+                <div class="row">
+                    <div class="col-10">
+                        <div class="form-floating">
+                            <input type="name_BUSINESS" name='name_BUSINESS' class="form-control" id="floatingInput" placeholder="name_BUSINESS">
+                            <label for="floatingInput">Nom de l'entreprise</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss='modal'>Acheter</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Adding scrip to make the tooltip work -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    
+    <script>
+        var options =
+        {
+            animation : true,
+        };
+        
+        var element = document.getElementById( 'businessDomain_help' );
+        
+        var tooltip = new bootstrap.Tooltip( element, options );
+    </script>
+</body>
+
+    
 <!-- Closing the 'main' and 'div' balise from business_sidebar.php -->
 </div>
 </main>
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 <?php
-    #-> Class 'IndexModel'
+    #-> Class 'User'
     final class User {
         # Variables
         private $id;
