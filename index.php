@@ -14,8 +14,14 @@
 	if(!isset($_SESSION)) { session_start(); }
 
 	switch($action) {
-		case 'business':
-			BusinessController::getInstance()->render();
+		case 'business_managers':
+			BusinessController::getInstance()->managers();
+			break;
+		case 'business_upgrades':
+			BusinessController::getInstance()->upgrades();
+			break;
+		case 'business_global':
+			BusinessController::getInstance()->global();
 			break;
 		case 'logout':
 			LoginController::userLogout();

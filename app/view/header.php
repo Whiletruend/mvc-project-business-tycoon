@@ -35,7 +35,7 @@
 
             <?php if(UserController::isConnected()) { ?>
                 <li class="nav-item">
-                <a class="nav-link <?= $this->activePage == 'business' ? 'active' : '' ?>" aria-current="page" href="?action=business">Affaires</a>
+                <a class="nav-link <?= $this->activePage == 'business_global' ? 'active' : '' ?> <?= $this->activePage == 'business_upgrades' ? 'active' : '' ?> <?= $this->activePage == 'business_managers' ? 'active' : '' ?>" aria-current="page" href="?action=business_global">Affaires</a>
                 </li>
             <?php } ?>
         </ul>
