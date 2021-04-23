@@ -1,7 +1,7 @@
-# Projet MVC - Laboratory Clicker
+# Projet MVC - Business Tycoon
 
 ### Projet MVC réalisé dans le cadre de mes études. 
-> Contexte: Un mini-jeu en ligne dont le but est d'avoir le + d'argent.
+> Contexte: Un mini-jeu en ligne dont le but est d'avoir le plus d'argent grâce aux différentes affaires que le joueur aura achetées.
 
 
 ```Modèle Conceptuel de Données (MCD) du Projet:```
