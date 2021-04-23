@@ -23,9 +23,9 @@
   <!-- Footer -->
   <body class="d-flex flex-column h-100">
 
-    <footer class="footer mt-auto py-3 bg-light">
+    <footer class="footer mt-auto py-3 bg-dark">
       <div class="container text-center">
-        <span class="text-muted">&copy 2021 • <strong>sensity.net</strong> - Business Tycoon</span>
+        <span class="text-light">&copy 2021 • <strong>sensity.net</strong> - Business Tycoon</span>
       </div>
     </footer>
     </body>

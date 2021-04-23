@@ -33,4 +33,4 @@
         </div>
         
         
-<!-- The non closing of the balise 'main' and 'div' is totally normal. -->
+<!-- The non closing of the balise 'main' and 'div' is totally normal. --> 
