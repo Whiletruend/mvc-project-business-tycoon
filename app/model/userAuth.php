@@ -96,7 +96,7 @@
 
             $isAdmin = false;
 
-            if(isset($_SESSION['mail_USER'])) {
+            if(self::isConnected()) {
 
                 $userInfos = UserAccess::getUserByMailAndPassword($_SESSION['mail_USER'], $_SESSION['password_USER']);
 

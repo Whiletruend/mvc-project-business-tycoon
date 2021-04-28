@@ -31,9 +31,13 @@
                     <div class="col-10">
                         <select class="form-select" aria-label="Choisissez le domaine de votre entreprise">
                             <option selected>Choisissez le domaine de votre entreprise</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="1">Agroalimentaire</option>
+                            <option value="2">Banque / Assurance</option>
+                            <option value="3">Commerce</option>
+                            <option value="4">Industrie Pharmaceutique</option>
+                            <option value="5">Informatique</option>
+                            <option value="6">Textile</option>
+                            <option value="7">Transports / Logistique</option>
                         </select>
                     </div>
                     <div class='col-md-auto'>
@@ -49,6 +53,27 @@
                             <input type="name_BUSINESS" name='name_BUSINESS' class="form-control" id="floatingInput" placeholder="name_BUSINESS">
                             <label for="floatingInput">Nom de l'entreprise</label>
                         </div>
+                    </div>
+                </div>
+                <div class='p-2'></div>
+                <div class="row">
+                    <div class="col-10">
+                        <select class="form-select" aria-label="Choisissez le domaine de votre entreprise">
+                            <option selected>Nombre d'employés au démarrage</option>
+                            <option value="1">1 employé</option>
+                            <option value="2">2 employés</option>
+                            <option value="3">3 employés</option>
+                        </select>
+                    </div>
+                </div>
+                <div class='p-2'></div>
+                <hr/>
+                <div class='row'>
+                    <div class='col-10'>
+                        <a class="nav-link px-2 text-truncate text-success" href="#">
+                            <i class="fas fa-shopping-cart fs-6"></i>
+                            <span class="d-none d-sm-inline">Montant total: <?= number_format($_SESSION['money_USER']) . '€'; ?></span> 
+                        </a>
                     </div>
                 </div>
             </div>
@@ -67,10 +92,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
     
     <script>
-        var options =
-        {
-            animation : true,
-        };
+        var options = { animation : true, };
         
         var element = document.getElementById( 'businessDomain_help' );
         

@@ -15,13 +15,13 @@
 
 	switch($action) {
 		case 'business_managers':
-			BusinessController::getInstance()->managers();
+			BusinessController::getInstance()->change_page($action);
 			break;
 		case 'business_upgrades':
-			BusinessController::getInstance()->upgrades();
+			BusinessController::getInstance()->change_page($action);
 			break;
 		case 'business_global':
-			BusinessController::getInstance()->global();
+			BusinessController::getInstance()->change_page($action);
 			break;
 		case 'logout':
 			LoginController::userLogout();
@@ -32,6 +32,7 @@
 		case 'register':
 			RegisterController::getInstance()->render();
 			break;
+			
 		default:
 			UserController::getInstance()->render();
 			break;
