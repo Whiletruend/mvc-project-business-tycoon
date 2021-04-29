@@ -8,14 +8,13 @@
         <div class='p-2'></div>   
         <?php foreach($this->businessList as $key => $val) { ?> 
             <div class="bg-white border rounded-3 p-3">
-                <button type="button" class="btn btn-outline-success float-right"><i class="fas fa-hand-holding-usd fa-lg"></i></button>
                 <h3><?= $val['name_BUSINESS']; ?></h3>
                 <h6 class='text-muted'>Domaine de l'entreprise: <strong>DOMAIN</strong></h6>
                 <hr>
                 <h6 style='font-weight: normal;'>Nombre d'employés actifs: <strong><?= $val['ea_BUSINESS']?></strong></h6>
                 <h6 style='font-weight: normal;'>Argent actuel de l'entreprise: <strong><?= $val['money_BUSINESS']?>€</strong></h6>
                 <h6 style='font-weight: normal;'>Revenus/minutes de l'entreprise: <strong><?= $val['income_BUSINESS']?>€</strong></h6>
-                
+                <button type="button" class="btn btn-outline-success float-right"><i class="fas fa-hand-holding-usd fa-lg"></i></button>
                 <div class='p-1'></div>
                 <?php 
                     if($val['isManaged_BUSINESS']) {
