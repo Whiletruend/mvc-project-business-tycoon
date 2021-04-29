@@ -1,10 +1,13 @@
 <?php
+    require 'app/model/businessAccess.php';
+    require 'app/model/domainAccess.php';
+    
     #-> Class 'Database'
     class Database {
         # Variables
         private static $db = null;
         private static $host_DB = 'localhost';
-        private static $name_DB = 'projet_mvc_test';
+        private static $name_DB = 'project_mvc_test';
         private static $user_DB = 'root';
         private static $pass_DB = '';
 

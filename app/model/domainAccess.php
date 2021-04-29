@@ -1,5 +1,4 @@
 <?php
-    require 'app/model/database.php';
     require 'app/model/domain.php';
 
     class DomainAccess extends Database {

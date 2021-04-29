@@ -1,6 +1,6 @@
 <?php
-    require 'app/model/database.php';
     require 'app/model/user.php';
+    require 'app/model/database.php';
 
     class UserAccess extends Database {
         public static function getAll() {

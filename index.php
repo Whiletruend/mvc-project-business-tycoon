@@ -32,7 +32,7 @@
 		case 'register':
 			RegisterController::getInstance()->render();
 			break;
-			
+
 		default:
 			UserController::getInstance()->render();
 			break;

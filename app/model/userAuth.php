@@ -42,6 +42,7 @@
                 die();
             }
 
+            $dbId = $userInfos->getID();
             $dbUsername = $userInfos->getUsername();
             $dbPassword = $userInfos->getPassword();
             $dbMail = $userInfos->getMail();
@@ -49,6 +50,7 @@
             $dbAdmin = $userInfos->getIsAdmin();
 
             if(trim($dbPassword) == trim($postPass) && trim($dbMail) == trim($postMail)) {
+                $_SESSION['id_USER'] = $dbId;
                 $_SESSION['username_USER'] = $dbUsername;
                 $_SESSION['password_USER'] = $dbPassword;
                 $_SESSION['mail_USER'] = $dbMail;
@@ -64,6 +66,7 @@
 
             if(self::isConnected()) { session_destroy(); }
 
+            unset($_SESSION['id_USER']);
             unset($_SESSION['username_USER']);
             unset($_SESSION['mail_USER']);
             unset($_SESSION['password_USER']);
