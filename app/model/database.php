@@ -35,6 +35,13 @@
             return $stat->fetchAll();
         }
 
+        protected static function prepareFetch($statement, $attributes) {
+            $stat = self::getPDO()->prepare($statement);
+            $stat->execute($attributes);
+
+            return $stat->fetch();
+        }
+
         protected static function request($statement, $attributes) {
             $stat = self::getPDO()->prepare($statement);
             $stat->execute($attributes);

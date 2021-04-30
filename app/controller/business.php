@@ -4,11 +4,14 @@
         private static $_instance = null;
         private $activePage;
         private $businessList;
+        private $domainList;
 
         private function __construct() {
             $collection = BusinessAccess::getBusinessByUserID($_SESSION['id_USER']);
-            
+            $collection_domain = DomainAccess::getAll();
+
             $this->businessList = $collection;
+            $this->domainList = $collection_domain;
 
             self::checkBuying();
         }
@@ -24,6 +27,11 @@
                     header('Location: ?action=business_global');
                 }
             }
+        }
+
+        public static function sellBusiness($businessid) {
+            header('Location: ?action=business_global');
+            BusinessAccess::businessSell($businessid);
         }
 
         public static function getInstance() {
