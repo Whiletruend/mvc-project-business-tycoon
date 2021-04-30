@@ -20,7 +20,7 @@
                     if($val['isManaged_BUSINESS']) {
                         echo "<h6 class='text-success'><strong>Entreprise dirigée par un directeur</strong></h6>";
                     } else {
-                        echo "<h6 class='text-danger'><strong>Entreprise non dirigée par un directeur</strong></h6>";
+                        echo "<h6 class='text-danger'><strong>Entreprise try dirigée par un directeur</strong></h6>";
                     }
                 ?>
                 
