@@ -27,7 +27,7 @@
 
             if(!empty($request)) {
                 foreach($request as $rows) {
-                    $collection[] = array('name_BUSINESS' => $rows['name_BUSINESS'], 'money_BUSINESS' => $rows['money_BUSINESS'], 'income_BUSINESS' => $rows['income_BUSINESS'], 'ea_BUSINESS' => $rows['ea_BUSINESS'], 'isManaged_BUSINESS' => $rows['isManaged_BUSINESS']);
+                    $collection[] = array('id_BUSINESS' => $rows['id_BUSINESS'], 'name_BUSINESS' => $rows['name_BUSINESS'], 'money_BUSINESS' => $rows['money_BUSINESS'], 'income_BUSINESS' => $rows['income_BUSINESS'], 'ea_BUSINESS' => $rows['ea_BUSINESS'], 'isManaged_BUSINESS' => $rows['isManaged_BUSINESS'], 'id_DOMAIN' => $rows['id_DOMAIN']);
                 }
             }
 
@@ -44,6 +44,10 @@
 
         public static function businessAdd($domain, $name, $ea, $userid) {
             $request = self::request('INSERT INTO BUSINESS(name_BUSINESS, money_BUSINESS, income_BUSINESS, ea_BUSINESS, wa_BUSINESS, isManaged_BUSINESS, id_DOMAIN, id_USER) VALUES (:name_BUSINESS, 0, 0, :ea_BUSINESS, 0, 0, :id_DOMAIN, :id_USER)', array(':name_BUSINESS' => $name, ':ea_BUSINESS' => $ea, ':id_DOMAIN' => $domain, ':id_USER' => $userid));
+        }
+
+        public static function businessSell($businessid) {
+            $request = self::request('DELETE FROM BUSINESS WHERE id_BUSINESS=:id', array(':id' => $businessid));
         }
     }
 //`id_BUSINESS`, `name_BUSINESS`, `money_BUSINESS`, `income_BUSINESS`, `ea_BUSINESS`, `wa_BUSINESS`, `isManaged_BUSINESS`, `id_MANAGER`, `id_DOMAIN`, `id_USER`

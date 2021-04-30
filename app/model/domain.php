@@ -14,5 +14,21 @@
             $this->description = $description;
             $this->cost = $cost;
         }
+
+        public function getID() {
+            return $this->id;
+        }
+
+        public function getName() {
+            return $this->name;
+        }
+
+        public function getDescription() {
+            return $this->description;
+        }
+
+        public function getCost() {
+            return $this->cost;
+        }
     }
 ?>
