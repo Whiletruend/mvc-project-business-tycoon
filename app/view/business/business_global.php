@@ -47,7 +47,6 @@
     </div>
 </div>
 
-
 <!-- Modal -->
 <body>
     <form action='#' method='POST'>
@@ -64,13 +63,9 @@
                             <div class="col-10">
                                 <select class="form-select" name='domain_BUSINESS' aria-label="Choisissez le domaine de votre entreprise">
                                     <option selected>Choisissez le domaine de votre entreprise</option>
-                                    <option value="1">Agroalimentaire</option>
-                                    <option value="2">Banque / Assurance</option>
-                                    <option value="3">Commerce</option>
-                                    <option value="4">Industrie Pharmaceutique</option>
-                                    <option value="5">Informatique</option>
-                                    <option value="6">Textile</option>
-                                    <option value="7">Transports / Logistique</option>
+                                    <?php foreach($this->domainList as $key => $val) {?>
+                                        <option value="<?= $key ?>"><?= $val->getName() . ' - ' . number_format($val->getCost()) . '€'; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div class='col-md-auto'>
