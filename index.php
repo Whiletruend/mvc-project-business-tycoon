@@ -14,7 +14,10 @@
 	if(!isset($_SESSION)) { session_start(); }
 
 	switch($action) {
-		case 'business_sell';
+		case 'business_moneyget':
+			BusinessController::getInstance()->getMoney($_GET['id_BUSINESS']);
+			break;
+		case 'business_sell':
 			BusinessController::getInstance()->sellBusiness($_GET['id_BUSINESS']);
 			break;
 		case 'business_managers':

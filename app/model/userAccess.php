@@ -59,6 +59,10 @@
         public static function registerUser($mail, $username, $password) {
             $request = self::request('INSERT INTO UTILISATEUR(username_USER, mail_USER, password_USER, money_USER, isAdmin_USER) VALUES (:username, :mail, :password, 15000, false)', array(':username' => $username, ':mail' => $mail, ':password' => $password));
         }
+
+        public static function setUserMoney($userid, $money) {
+            $request = self::request('UPDATE UTILISATEUR SET money_USER = :money WHERE id_USER = :id', array(':money' => $money, ':id' => $userid));
+        }
     }
 //(`id_USER`, `username_USER`, `mail_USER`, `password_USER`, `money_USER`, `isAdmin_USER`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
 ?>

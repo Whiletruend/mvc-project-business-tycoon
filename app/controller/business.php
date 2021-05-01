@@ -24,13 +24,21 @@
 
                 if((!$domain == 'Choisissez le domaine de votre entreprise') or (!empty($name)) or (!$employee_amount == "Nombre d'employés au démarrage")) {
                     BusinessAccess::businessAdd($domain, $name, $employee_amount, $_SESSION['id_USER']);
-                    header('Location: ?action=business_global');
+                    header('Location: ./?action=business_global');
                 }
             }
         }
 
+        public static function getMoney($businessid) {
+            $request = BusinessAccess::businessGetMoney($businessid); // Get the money amount in the database of the business
+            $_SESSION['money_USER'] = $_SESSION['money_USER'] + $request[0]['money_BUSINESS']; // Set "locally" (session) the money to the USER
+            $user_request = UserAccess::setUserMoney($_SESSION['id_USER'], $_SESSION['money_USER']); // Save theses changements
+
+            header('Location: ./?action=business_global');
+        }
+
         public static function sellBusiness($businessid) {
-            header('Location: ?action=business_global');
+            header('Location: ./?action=business_global');
             BusinessAccess::businessSell($businessid);
         }
 

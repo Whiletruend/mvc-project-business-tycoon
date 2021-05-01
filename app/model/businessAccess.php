@@ -49,6 +49,13 @@
         public static function businessSell($businessid) {
             $request = self::request('DELETE FROM BUSINESS WHERE id_BUSINESS=:id', array(':id' => $businessid));
         }
+
+        public static function businessGetMoney($businessid) {
+            $request = self::prepare('SELECT money_BUSINESS FROM BUSINESS WHERE id_BUSINESS=:id', array(':id' => $businessid));
+            $update = self::request('UPDATE BUSINESS SET money_BUSINESS = 0 WHERE id_BUSINESS=:id', array(':id' => $businessid));
+            
+            return $request;
+        }
     }
 //`id_BUSINESS`, `name_BUSINESS`, `money_BUSINESS`, `income_BUSINESS`, `ea_BUSINESS`, `wa_BUSINESS`, `isManaged_BUSINESS`, `id_MANAGER`, `id_DOMAIN`, `id_USER`
 ?>
