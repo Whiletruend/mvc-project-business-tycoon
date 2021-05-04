@@ -1,15 +1,3 @@
-<?php
-  if(isset($_POST['mail_USER']) & isset($_POST['username_USER']) & isset($_POST['password_USER'])) {
-      $postMail = $_POST['mail_USER'];
-      $postName = $_POST['username_USER'];
-      $postPass = $_POST['password_USER'];
-
-      $register = new RegisterController;
-      
-      $register->userAddAccount($postMail, $postName, $postPass);
-  }
-?>
-
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
@@ -45,6 +33,13 @@
                   <div>
                     <main class="form-register">
                       <form action='#' method='POST'>
+                          <?php if(self::$msg != '') {?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <strong>Erreur !</strong> <?= self::$msg ?> <a href="?action=login" class="alert-link">Recommencer</a>.
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                          <?php } ?>
+
                           <center><h1 class="h3 mb-3 fw-normal">Créer un compte</h1></center>
 
                           <div class="form-floating">

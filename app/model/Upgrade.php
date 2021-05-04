@@ -1,4 +1,6 @@
 <?php
+    namespace App\model;
+    
     #-> Class 'Upgrade'
     final class Upgrade {
         # Variables

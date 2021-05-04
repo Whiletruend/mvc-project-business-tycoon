@@ -1,18 +1,26 @@
 <?php
+    namespace App\controller;
+    use App\model\UserAuth;
+    use App\model\UserAccess;
+    use App\model\BusinessAccess;
+
     #-> Class 'IndexController'
     class IndexController {
         private static $_instance = null;
-        private $ex_text;
-        private $table;
         private $activePage;
         private $userRanking;
-
+        private $userBusinessCount;
+ 
         private function __construct() {
-            $this->ex_text = 'Example Text';
-
             $collection = UserAccess::getUsersDESCRanking();
 
             $this->userRanking = $collection;
+        }
+
+        public static function getBusinessAmountByUserID($userid) {
+            $value = BusinessAccess::getBusinessAmountByUserID($userid);
+
+            return $value;
         }
 
         public static function getInstance() {
@@ -21,6 +29,18 @@
             }
 
             return self::$_instance;
+        }
+
+        public static function isConnected() {
+            $connected = UserAuth::isConnected();
+
+            return $connected;
+        }
+
+        public static function isAdmin() {
+            $admin = UserAuth::isAdmin();
+
+            return $admin;
         }
 
         public function render() {

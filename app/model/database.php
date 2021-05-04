@@ -1,7 +1,7 @@
-<?php
-    require 'app/model/businessAccess.php';
-    require 'app/model/domainAccess.php';
-    
+<?php  
+    namespace App\model;
+    use PDO;
+
     #-> Class 'Database'
     class Database {
         # Variables

@@ -34,6 +34,7 @@
                             <th scope="row"><?= $key + 1; ?></th>
                             <td><?= $val['Username']; ?></td>
                             <td><?= number_format($val['Money']) . '€'; ?></td>
+                            <td><?= number_format(self::getBusinessAmountByUserID($val['UserID'])); ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>

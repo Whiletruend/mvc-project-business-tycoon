@@ -1,4 +1,6 @@
 <?php
+    namespace App\model;
+    
     #-> Class 'Business'
     final class Business {
         # Variables
@@ -21,7 +23,7 @@
             $this->income = $income;
             $this->employee_amount = $employee_amount;
             $this->work_amount = $work_amount;
-            $this->isManaged = $isManaged;
+            $this->isManaged = $isManaged; 
             $this->idManager = $idManager;
             $this->idDomain = $idDomain;
             $this->idUser = $idUser;

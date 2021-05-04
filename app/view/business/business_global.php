@@ -10,6 +10,18 @@
     <div class='p-1'></div>
     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addBusinessModal">Acheter une affaire</button>
     <div class='p-2'></div>
+    <?php if(self::$msg != '') {?>
+        <div class="alert alert-danger alert-dismissible fade show" id='login_error_Alert' role="alert">
+            <strong>Erreur !</strong> <?= self::$msg ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <script>
+            $("#login_error_Alert").fadeTo(2000, 500).slideUp(500, function(){
+                $("#login_error_Alert").slideUp(500);
+            });
+        </script>
+    <?php } ?>
     <div class="bg-light border rounded-3 p-3">
         <a class="text-info" href="./?action=business_global"><button type="button" class="btn btn-outline-info float-right" id="businessUpgrade_goto" data-toggle="tooltip" data-placement="left" title="Rafraîchir la page"><i class="fas fa-sync-alt fa-lg"></i></button></a>
         <h2>Vue d'ensemble de vos affaires</h2>
@@ -95,25 +107,83 @@
                             </div>
                         </div>
                         <div class='p-2'></div>
-                        <hr/>
-                        <div class='row'>
-                            <div class='col-10'>
-                                <a class="nav-link px-2 text-truncate text-success" href="#">
-                                    <i class="fas fa-shopping-cart fs-6"></i>
-                                    <span class="d-none d-sm-inline">Montant total: <?= number_format($_SESSION['money_USER']) . '€'; ?></span> 
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button type="submit" class="btn btn-primary" name='submit'>Acheter</button>
+                    <button type="submit" class="btn btn-primary" name='submit'>Suivant</button>
                 </div>
             </div>
         </div>
         </div>
     </form>
+
+    <?php if(isset(self::$buyingRecap['OnRecap'])) { ?>
+        <script type="text/javascript">
+            $(window).on('load', function() {
+                $('#recapModal').modal('show');
+            });
+        </script>
+
+        <form method='POST'>
+            <div class="modal fade" id="recapModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modelTitle">Récapitulatif de votre achat d'entreprise</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class='container'>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input class="form-control" value="<?= self::$buyingRecap['Name']; ?>" type="text" name='recap_name_BUSINESS' readonly>
+                                        <label for="floatingInput">Nom de l'entreprise</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='p-2'></div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input class="form-control d-none" value="<?= self::$buyingRecap['DomainID']; ?>" type="text" name='recap_domain_BUSINESS' readonly>
+                                        <input class="form-control" value="<?= self::$buyingRecap['Domain']; ?>" type="text" readonly>
+                                        <label for="floatingInput">Domaine de l'entreprise</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='p-2'></div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input class="form-control" value="<?= self::$buyingRecap['Emp_amount']; ?>" type="text" name='recap_empamount_BUSINESS' readonly>
+                                        <label for="floatingInput">Nombre d'employé(s) au démarrage</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='p-2'></div>
+                            <hr/>
+                            <div class='row'>
+                                <div class='col-10'>
+                                    <a class="nav-link px-2 text-truncate text-success" href="#">
+                                        <i class="fas fa-shopping-cart fs-6"></i>
+                                        <span class="d-none d-sm-inline">Montant total: <?= number_format(self::$buyingRecap['TotalCost']) . '€'; ?></span> 
+                                    </a>
+                                </div>
+                            </div>
+                            <input type="text" readonly class="form-control-plaintext text-success d-none" name="recap_totalcost_BUSINESS" value="<?= self::$buyingRecap['TotalCost']; ?>"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary" name='submit'>Acheter</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </form>
+    <?php } ?>
 
 
     <!-- Adding JS Script to make Tooltip work -->

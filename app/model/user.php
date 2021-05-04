@@ -1,4 +1,6 @@
 <?php
+    namespace App\model;
+    
     #-> Class 'User'
     final class User {
         # Variables

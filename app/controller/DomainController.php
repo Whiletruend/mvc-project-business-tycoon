@@ -1,4 +1,7 @@
 <?php
+    namespace App\controller;
+    use App\model\DomainAccess;
+
     #-> Class 'DomainController'
     class DomainController {
         private static $_instance = null;

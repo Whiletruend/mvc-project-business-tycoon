@@ -1,14 +1,3 @@
-<?php
-  if(isset($_POST['mail_USER']) & isset($_POST['password_USER'])) {
-      $postMail = $_POST['mail_USER'];
-      $postPass = $_POST['password_USER'];
-
-      $login = new LoginController;
-
-      $login->userLogin($postMail, $postPass);
-  }
-?>
-
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
@@ -44,6 +33,32 @@
                   <div>
                     <main class="form-login">
                       <form action='#' method='POST'>
+                        <?php if(self::$msg != '') {?>
+                          <div class="alert alert-danger alert-dismissible fade show" id='login_error_Alert' role="alert">
+                            <strong>Erreur !</strong> <?= self::$msg ?> <a href="?action=login" class="alert-link">Recommencer</a>.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+
+                          <script>
+                            $("#login_error_Alert").fadeTo(2000, 500).slideUp(500, function(){
+                                $("#login_error_Alert").slideUp(500);
+                            });
+                          </script>
+                        <?php } ?>
+
+                        <?php if(isset($_GET['account_created'])) { ?>
+                          <div class="alert alert-success alert-dismissible fade show" id='created_account_Alert' role="alert">
+                            <strong>Succès !</strong> Votre compte a bien été créé.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+
+                          <script>
+                            $("#created_account_Alert").fadeTo(2000, 500).slideUp(500, function(){
+                                $("#created_account_Alert").slideUp(500);
+                            });
+                          </script>
+                        <?php } ?>
+
                         <center><h1 class="h3 mb-3 fw-normal">Se connecter</h1></center>
 
                         <div class="form-floating">

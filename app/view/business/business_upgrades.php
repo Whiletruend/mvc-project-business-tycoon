@@ -1,11 +1,3 @@
-<script type="text/javascript">
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
-
-</script>
-
 <div class="col overflow-auto h-100">
     <div class="bg-light border rounded-3 p-3">
         <a class="text-info" href="./?action=business_upgrades"><button type="button" class="btn btn-outline-info float-right" id="businessUpgrade_goto" data-toggle="tooltip" data-placement="left" title="Rafraîchir la page"><i class="fas fa-sync-alt fa-lg"></i></button></a>
@@ -22,17 +14,17 @@
                     <div class="row align-items-start">
                         <div class="col-lg">
                             <h6 style='font-weight: normal;'>Nombre d'employés actifs: <strong><?= $val['ea_BUSINESS']; ?> / 30</strong></h6>
-                            <button class='btn btn-outline-primary'>Engager un nouvel employé</button>
+                            <a href='.?action=business_new_employee&id_BUSINESS'><button class='btn btn-outline-primary'>Engager un nouvel employé</button></a>
                         </div>
                         
                         <div class="col-lg">
                             <h6 style='font-weight: normal;'>Revenus de l'entreprise: <strong><?= $val['income_BUSINESS']; ?> / minutes</strong></h6>
-                            <button class='btn btn-outline-primary'>Surcadençage du travail</button>
+                            <a href='#'><button class='btn btn-outline-primary'>Surcadençage du travail</button></a>
                         </div>
 
                         <div class="col-lg">
                             <h6 style='font-weight: normal;'>Qualité du travail de l'entreprise: <strong><?= $val['income_BUSINESS']; ?></strong></h6>
-                            <button class='btn btn-outline-primary'>Qualité du travail</button>
+                            <a href='#'><button class='btn btn-outline-primary'>Qualité du travail</button></a>
                         </div>
                     </div>
                 </div>

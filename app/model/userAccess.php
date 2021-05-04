@@ -1,7 +1,7 @@
 <?php
-    require 'app/model/user.php';
-    require 'app/model/database.php';
-
+    namespace App\model;
+    use PDO;
+    
     class UserAccess extends Database {
         public static function getAll() {
             $query = self::query('SELECT * FROM UTILISATEUR');
@@ -22,6 +22,14 @@
 
         public static function getUserByMailAndPassword($mail, $password) {
             $request = self::prepare('SELECT * FROM UTILISATEUR WHERE mail_USER = :mail AND password_USER = :password', array(':mail' => $mail, ':password' => $password));
+
+            if(!empty($request)) {
+                return new User($request[0]['id_USER'], $request[0]['username_USER'], $request[0]['password_USER'], $request[0]['mail_USER'], $request[0]['money_USER'], $request[0]['isAdmin_USER']);
+            }
+        }
+
+        public static function getUserByMailOrPassword($mail, $password) {
+            $request = self::prepare('SELECT * FROM UTILISATEUR WHERE mail_USER = :mail OR password_USER = :password', array(':mail' => $mail, ':password' => $password));
 
             if(!empty($request)) {
                 return new User($request[0]['id_USER'], $request[0]['username_USER'], $request[0]['password_USER'], $request[0]['mail_USER'], $request[0]['money_USER'], $request[0]['isAdmin_USER']);
@@ -50,7 +58,7 @@
             $collection = array();
 
             foreach($query as $rows) {
-                $collection[] = array('Username' => $rows['username_USER'], 'Money' => $rows['money_USER']);
+                $collection[] = array('UserID' => $rows['id_USER'], 'Username' => $rows['username_USER'], 'Money' => $rows['money_USER']);
             }
 
             return $collection;
@@ -60,8 +68,16 @@
             $request = self::request('INSERT INTO UTILISATEUR(username_USER, mail_USER, password_USER, money_USER, isAdmin_USER) VALUES (:username, :mail, :password, 15000, false)', array(':username' => $username, ':mail' => $mail, ':password' => $password));
         }
 
-        public static function setUserMoney($userid, $money) {
+        public static function setUserMoneyByID($userid, $money) {
             $request = self::request('UPDATE UTILISATEUR SET money_USER = :money WHERE id_USER = :id', array(':money' => $money, ':id' => $userid));
+        }
+
+        public static function getUserMoneyByID($userid) {
+            $request = self::prepare('SELECT money_USER FROM UTILISATEUR WHERE id_USER = :id', array(':id' => $userid));
+
+            if(!empty($request)) {
+                return $request[0]['money_USER'];
+            }
         }
     }
 //(`id_USER`, `username_USER`, `mail_USER`, `password_USER`, `money_USER`, `isAdmin_USER`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')

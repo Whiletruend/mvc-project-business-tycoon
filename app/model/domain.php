@@ -1,4 +1,6 @@
 <?php
+    namespace App\model;
+    
     #-> Class 'Domain'
     final class Domain {
         # Variables

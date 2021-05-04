@@ -1,6 +1,7 @@
 <?php
-    require 'app/model/business.php';
-
+    namespace App\model;
+    use PDO;
+    
     class BusinessAccess extends Database {
         public static function getAll() {
             $query = self::query('SELECT * FROM BUSINESS');
@@ -42,6 +43,12 @@
             }
         }
 
+        public static function getBusinessAmountByUserID($userid) {
+            $request = self::prepare('SELECT COUNT(*) as TOTAL FROM BUSINESS WHERE id_USER = :id', array(':id' => $userid));
+
+            return $request[0]['TOTAL'];
+        }
+
         public static function businessAdd($domain, $name, $ea, $userid) {
             $request = self::request('INSERT INTO BUSINESS(name_BUSINESS, money_BUSINESS, income_BUSINESS, ea_BUSINESS, wa_BUSINESS, isManaged_BUSINESS, id_DOMAIN, id_USER) VALUES (:name_BUSINESS, 0, 0, :ea_BUSINESS, 0, 0, :id_DOMAIN, :id_USER)', array(':name_BUSINESS' => $name, ':ea_BUSINESS' => $ea, ':id_DOMAIN' => $domain, ':id_USER' => $userid));
         }
@@ -55,6 +62,14 @@
             $update = self::request('UPDATE BUSINESS SET money_BUSINESS = 0 WHERE id_BUSINESS=:id', array(':id' => $businessid));
             
             return $request;
+        }
+
+        public static function businessGetDomainByID($businessid) {
+            $request = self::prepare('SELECT id_DOMAIN FROM BUSINESS WHERE id_BUSINESS = :id', array(':id' => $businessid));
+
+            if(!empty($request)) {
+                return $request[0]['id_DOMAIN'];
+            }
         }
     }
 //`id_BUSINESS`, `name_BUSINESS`, `money_BUSINESS`, `income_BUSINESS`, `ea_BUSINESS`, `wa_BUSINESS`, `isManaged_BUSINESS`, `id_MANAGER`, `id_DOMAIN`, `id_USER`

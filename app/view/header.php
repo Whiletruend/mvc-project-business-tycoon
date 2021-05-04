@@ -1,5 +1,6 @@
 <?php 
     if(!isset($_SESSION)) { session_start(); }
+    use App\controller\UserController;
 ?>
 <!DOCTYPE HTML>
 <html lang='fr'>

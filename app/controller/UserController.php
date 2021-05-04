@@ -1,6 +1,7 @@
 <?php
-    require 'app/model/userAccess.php';
-    require 'app/model/userAuth.php';
+    namespace App\controller;
+    use App\model\UserAuth;
+    use App\model\UserAccess;
 
     #-> Class 'UserController'
     class UserController {

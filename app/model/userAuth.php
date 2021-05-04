@@ -1,79 +1,9 @@
 <?php
+    namespace App\model;
+    use App\controller\UserController;
+    
     #-> Class 'userAuth'
     class UserAuth {
-        public static function userAddAccount($postMail, $postUsername, $postPass) {
-            $getInfos = UserAccess::getUserByMailOrUsername($postMail, $postUsername);
-            if(!isset($_SESSION)) { session_start(); }
-
-            if(empty($getInfos)) { 
-                UserAccess::registerUser($postMail, $postUsername, $postPass);
-
-                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Parfait !</strong> Votre compte a été créé avec succès. <a href="?action=login" class="alert-link">Se connecter</a>.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-
-                die();
-            }
-
-            $mail = $getInfos['mail_USER'];
-            $username = $getInfos['username_USER'];
-
-            if((trim($mail) == trim($postMail)) or (trim($username) == trim($postUsername))) {
-                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Erreur !</strong> Ce compte existe déjà.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-
-                die();
-            }
-        }
-
-        public static function userLogin($postMail, $postPass) {
-            $userInfos = UserAccess::getUserByMailAndPassword($postMail, $postPass);
-            if(!isset($_SESSION)) { session_start(); }
-
-            if(empty($userInfos)) {
-                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Erreur !</strong> E-Mail ou mot de passe incorrect. <a href="?action=login" class="alert-link">Recommencer</a>.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-
-                die();
-            }
-
-            $dbId = $userInfos->getID();
-            $dbUsername = $userInfos->getUsername();
-            $dbPassword = $userInfos->getPassword();
-            $dbMail = $userInfos->getMail();
-            $dbMoney = $userInfos->getMoney();
-            $dbAdmin = $userInfos->getIsAdmin();
-
-            if(trim($dbPassword) == trim($postPass) && trim($dbMail) == trim($postMail)) {
-                $_SESSION['id_USER'] = $dbId;
-                $_SESSION['username_USER'] = $dbUsername;
-                $_SESSION['password_USER'] = $dbPassword;
-                $_SESSION['mail_USER'] = $dbMail;
-                $_SESSION['money_USER'] = $dbMoney;
-                $_SESSION['isAdmin_USER'] = $dbAdmin;
-
-                header('Location: .');
-            }
-        }
-
-        public static function userLogout() {
-            if(!isset($_SESSION)) { session_start(); } 
-
-            if(self::isConnected()) { session_destroy(); }
-
-            unset($_SESSION['id_USER']);
-            unset($_SESSION['username_USER']);
-            unset($_SESSION['mail_USER']);
-            unset($_SESSION['password_USER']);
-            unset($_SESSION['money_USER']);
-            unset($_SESSION['isAdmin_USER']);
-        }
-
         public static function isConnected() {
             if(!isset($_SESSION)) { session_start(); }
 

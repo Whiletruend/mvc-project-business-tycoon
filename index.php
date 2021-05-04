@@ -1,9 +1,6 @@
 <?php
-	require 'app/controller/index.php';
-	require 'app/controller/business.php';
-	require 'app/controller/user.php';
-	require 'app/controller/login.php';
-	require 'app/controller/register.php';
+	namespace App\controller;
+	include 'vendor/autoload.php';
 
 	if(isset($_GET['action'])) {
 		$action = $_GET['action'];
@@ -40,7 +37,7 @@
 			break;
 
 		default:
-			UserController::getInstance()->render();
+			IndexController::getInstance()->render();
 			break;
 	}
 ?>
