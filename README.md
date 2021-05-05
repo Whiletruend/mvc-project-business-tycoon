@@ -5,12 +5,12 @@
 
 
 ```Modèle Conceptuel de Données (MCD) du Projet:```
-![alt text](https://i.ibb.co/Ks7RmhS/MCD.png)
+![alt text](https://i.ibb.co/Lh1ZFvK/MCD.png)
 
 
 
 ```Modèle Logique de Données (MLD) du Projet:```
-![alt text](https://i.ibb.co/fN95Xb9/MLD.png)
+![alt text](https://i.ibb.co/sHHH32s/MLD.png)
 
 
 ```Diagramme de Classe (UML) - [Encore en cours de création]:```
