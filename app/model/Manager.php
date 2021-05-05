@@ -6,15 +6,11 @@
         # Variables
         private $id;
         private $name;
-        private $description;
-        private $cost;
 
         # Functions
-        public function __construct($id, $name, $description, $cost) {
+        public function __construct($id, $name) {
             $this->id = $id;
             $this->name = $name;
-            $this->description = $description;
-            $this->cost = $cost;
         }
 
         public function getID() {
@@ -23,14 +19,6 @@
 
         public function getName() {
             return $this->name;
-        }
-
-        public function getDescription() {
-            return $this->description;
-        }
-
-        public function getCost() {
-            return $this->cost;
         }
     }
 ?>

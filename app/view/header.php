@@ -64,7 +64,7 @@
                     <li><a class="dropdown-item text-danger" href="./?action=logout">Déconnexion</a></li>
                     <?php if(UserController::isAdmin()) { ?>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="#">Mode administrateur</a></li> 
+                        <li><a class="dropdown-item text-danger" href="./?action=admin">Mode administrateur</a></li> 
                     <?php } ?>
                 <?php } ?>
             </ul>

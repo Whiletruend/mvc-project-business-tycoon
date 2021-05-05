@@ -104,5 +104,21 @@
                 return $request[0]['id_DOMAIN'];
             }
         }
+
+        public static function getManagerNameByID($businessid) {
+            $request = self::prepare('SELECT id_MANAGER FROM BUSINESS WHERE id_BUSINESS = :id', array(':id' => $businessid));
+
+            return $request[0]['id_MANAGER'];
+        }
+
+        public static function getBusinessIDByName($name) {
+            $request = self::prepare('SELECT id_BUSINESS FROM BUSINESS WHERE name_BUSINESS = :name', array(':name' => $name));
+
+            return $request[0]['id_BUSINESS'];
+        }
+
+        public static function addManager($managerid, $businessid) {
+            $request = self::request('UPDATE BUSINESS SET isManaged_BUSINESS = 1, id_MANAGER = :id_MANAGER WHERE id_BUSINESS = :id_BUSINESS', array(':id_MANAGER' => $managerid, ':id_BUSINESS' => $businessid));
+        }
     }
 ?>

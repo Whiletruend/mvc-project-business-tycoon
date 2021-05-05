@@ -12,5 +12,9 @@
                 return 0;
             }
         }
+        
+        public static function possessAdd($businessid) {
+            $request = self::request('INSERT INTO POSSEDER VALUES (:id_BUSINESS, 3, 1)', array(':id_BUSINESS' => $businessid));
+        }
     }
 ?>

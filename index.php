@@ -47,6 +47,9 @@
 		case 'register':
 			RegisterController::getInstance()->render();
 			break;
+		case 'admin':
+			AdminController::getInstance()->render();
+			break;
 		
 		// Default
 		default:

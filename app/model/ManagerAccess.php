@@ -4,22 +4,32 @@
     
     class ManagerAccess extends Database {
         public static function getAll() {
-            $query = self::query('SELECT * FROM AMÉLIORATION');
+            $query = self::query('SELECT * FROM DIRECTEUR');
             $collection = array();
 
-            foreach($query as $rows) {
-                $collection[$rows['id_UPGRADE']] = new Upgrade($rows['id_UPGRADE'], $rows['name_UPGRADE'], $rows['description_UPGRADE'], $rows['cost_UPGRADE']);
+            if(!empty($query)) {
+                foreach($query as $rows) {
+                    $collection[$rows['id_MANAGER']] = new Manager($rows['id_MANAGER'], $rows['name_MANAGER']);
+                }
             }
 
             return $collection;
         }
 
-        public static function getUpgradeByID($id) {
-            $request = self::prepare('SELECT * FROM AMÉLIORATION WHERE id_UPGRADE=:id', array(':id' => $id));
-            
-            if(!empty($request)) {
-                return new Upgrade($request[0]['id_UPGRADE'], $request[0]['name_UPGRADE'], $request[0]['description_UPGRADE'], $request[0]['cost_UPGRADE']);
-            }
+        public static function addManager($name) {
+            $request = self::request('INSERT INTO DIRECTEUR(name_MANAGER) VALUES (:name_MANAGER)', array(':name_MANAGER' => $name));
+        }
+
+        public static function getManagerIDByName($name) {
+            $request = self::prepare('SELECT id_MANAGER FROM DIRECTEUR WHERE name_MANAGER = :name_MANAGER', array(':name_MANAGER' => $name));
+
+            return $request[0]['id_MANAGER'];
+        }
+
+        public static function getMangerNameByID($id) {
+            $request = self::prepare('SELECT name_MANAGER FROM DIRECTEUR WHERE id_MANAGER = :id_MANAGER', array(':id_MANAGER' => $id));
+
+            return $request[0]['name_MANAGER'];
         }
     }
 ?>
