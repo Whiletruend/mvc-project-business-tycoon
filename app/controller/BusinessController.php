@@ -13,7 +13,6 @@
         private $businessList;
         private $domainList;
         private $upgradeList;
-        private $possessList;
         private static $buyingRecap = array();
         private static $msg = '';
 
@@ -25,8 +24,6 @@
             $this->businessList = $collection;
             $this->domainList = $collection_domain;
             $this->upgradeList = $collection_upgrades;
-
-            print_r($this->possessList);
 
             self::checkBuying();
             self::checkAcceptRecap();
@@ -103,17 +100,50 @@
         }
 
         public static function upgradeEmployee($businessid) {
-            BusinessAccess::businessUpgradeEmployee($businessid);
+            // Set-up variables
+            $collection_upgrades = UpgradeAccess::getAll(); // Get every upgrades and their values
+            $totalcost = $collection_upgrades[3]->getCost() * self::getLevelByBusinessAndUpgradeID($businessid, 3);
+            $userMoney = $_SESSION['money_USER'];
+
+            if($userMoney >= $totalcost) {
+                $newMoney = $userMoney - $totalcost;
+
+                UserAccess::setUserMoneyByID($_SESSION['id_USER'], $newMoney);
+                BusinessAccess::businessUpgradeEmployee($businessid);
+            }
+
             header('Location: ./?action=business_upgrades');
         }
 
         public static function upgradeIncome($businessid) {
-            BusinessAccess::businessUpgradeIncome($businessid);
+            // Set-up variables
+            $collection_upgrades = UpgradeAccess::getAll(); // Get every upgrades and their values
+            $totalcost = $collection_upgrades[1]->getCost() * self::getLevelByBusinessAndUpgradeID($businessid, 1);
+            $userMoney = $_SESSION['money_USER'];
+
+            if($userMoney >= $totalcost) {
+                $newMoney = $userMoney - $totalcost;
+
+                UserAccess::setUserMoneyByID($_SESSION['id_USER'], $newMoney);
+                BusinessAccess::businessUpgradeIncome($businessid);
+            }
+
             header('Location: ./?action=business_upgrades');
         }
 
         public static function upgradeQuality($businessid) {
-            BusinessAccess::businessUpgradeQuality($businessid);
+            // Set-up variables
+            $collection_upgrades = UpgradeAccess::getAll(); // Get every upgrades and their values
+            $totalcost = $collection_upgrades[2]->getCost() * self::getLevelByBusinessAndUpgradeID($businessid, 2);
+            $userMoney = $_SESSION['money_USER'];
+
+            if($userMoney >= $totalcost) {
+                $newMoney = $userMoney - $totalcost;
+
+                UserAccess::setUserMoneyByID($_SESSION['id_USER'], $newMoney);
+                BusinessAccess::businessUpgradeQuality($businessid);
+            }
+
             header('Location: ./?action=business_upgrades');
         }
 

@@ -14,17 +14,17 @@
                     <div class="row align-items-start">
                         <div class="col-lg">
                             <h6 style='font-weight: normal;'>Nombre d'employés actifs: <strong><?= self::getLevelByBusinessAndUpgradeID($val['id_BUSINESS'], 3); ?></strong></h6>
-                            <a href='./?action=business_upgrade_employee&id_BUSINESS=<?= $val['id_BUSINESS']; ?>'><button class='btn btn-outline-primary'>Engager un nouvel employé</button></a>
+                            <a href='./?action=business_upgrade_employee&id_BUSINESS=<?= $val['id_BUSINESS']; ?>'><button class='btn btn-outline-primary'>Engager un nouvel employé (-<?= number_format($this->upgradeList[3]->getCost() * self::getLevelByBusinessAndUpgradeID($val['id_BUSINESS'], 3)); ?>€)</button></a>
                         </div>
                         
                         <div class="col-lg">
                             <h6 style='font-weight: normal;'>Revenus de l'entreprise: <strong><?= self::getLevelByBusinessAndUpgradeID($val['id_BUSINESS'], 1); ?>€/mn</strong></h6>
-                            <a href='./?action=business_upgrade_income&id_BUSINESS=<?= $val['id_BUSINESS']; ?>'><button class='btn btn-outline-primary'>Améliorer les revenus</button></a>
+                            <a href='./?action=business_upgrade_income&id_BUSINESS=<?= $val['id_BUSINESS']; ?>'><button class='btn btn-outline-primary'>Améliorer les revenus (-<?= number_format($this->upgradeList[1]->getCost() * self::getLevelByBusinessAndUpgradeID($val['id_BUSINESS'], 1)); ?>€)</button></a>
                         </div>
 
                         <div class="col-lg">
                             <h6 style='font-weight: normal;'>Qualité du travail de l'entreprise: <strong><?= self::getLevelByBusinessAndUpgradeID($val['id_BUSINESS'], 2); ?></strong></h6>
-                            <a href='./?action=business_upgrade_quality&id_BUSINESS=<?= $val['id_BUSINESS']; ?>'><button class='btn btn-outline-primary'>Améliorer la qualité</button></a>
+                            <a href='./?action=business_upgrade_quality&id_BUSINESS=<?= $val['id_BUSINESS']; ?>'><button class='btn btn-outline-primary'>Améliorer la qualité (-<?= number_format($this->upgradeList[2]->getCost() * self::getLevelByBusinessAndUpgradeID($val['id_BUSINESS'], 2)); ?>€)</button></a>
                         </div>
                     </div>
                 </div>
