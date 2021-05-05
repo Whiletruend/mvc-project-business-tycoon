@@ -19,7 +19,7 @@
             $this->money = $money;
             $this->isManaged = $isManaged; 
             $this->idManager = $idManager;
-            $this->idDomain = $idDomain;
+            $this->idDomain = $idDomain; 
             $this->idUser = $idUser;
         }
 

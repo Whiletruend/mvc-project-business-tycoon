@@ -23,7 +23,7 @@
 
         public function getID() {
             return $this->id;
-        }
+        } 
 
         public function getUsername() {
             return $this->username;
