@@ -24,15 +24,7 @@
             }
         }
 
-        public static function getInstance() {
-            if(is_null(self::$_instance)) {
-                self::$_instance = new LoginController();
-            }
-
-            return self::$_instance;
-        }
-
-        public static function userLogin($postMail, $postPass) {
+        private static function userLogin($postMail, $postPass) {
             $userInfos = UserAccess::getUserByMailOrPassword($postMail, $postPass);
             if(!isset($_SESSION)) { session_start(); }
 
@@ -59,6 +51,14 @@
                     self::$msg = "Email ou Mot de passe incorrect.";
                 }
             }
+        }
+
+        public static function getInstance() {
+            if(is_null(self::$_instance)) {
+                self::$_instance = new LoginController();
+            }
+
+            return self::$_instance;
         }
 
         public static function userLogout() {

@@ -8,7 +8,7 @@
             $collection = array();
 
             foreach($query as $rows) {
-                $collection[$rows['id_BUSINESS']] = new Business($rows['id_BUSINESS'], $rows['name_BUSINESS'], $rows['money_BUSINESS'], $rows['income_BUSINESS'], $rows['ea_BUSINESS'], $rows['wa_BUSINESS'], $rows['isMananged_BUSINESS'], $rows['id_MANAGER'], $rows['id_DOMAIN'], $rows['id_USER']);
+                $collection[$rows['id_BUSINESS']] = new Business($rows['id_BUSINESS'], $rows['name_BUSINESS'], $rows['money_BUSINESS'], $rows['isMananged_BUSINESS'], $rows['id_MANAGER'], $rows['id_DOMAIN'], $rows['id_USER']);
             }
 
             return $collection;
@@ -18,7 +18,7 @@
             $request = self::prepare('SELECT * FROM BUSINESS WHERE id_BUSINESS=:id', array(':id' => $id));
 
             if(!empty($request)) {
-                return new Business($request[0]['id_BUSINESS'], $request[0]['name_BUSINESS'], $request[0]['money_BUSINESS'], $request[0]['income_BUSINESS'], $request[0]['ea_BUSINESS'], $request[0]['wa_BUSINESS'], $request[0]['isMananged_BUSINESS'], $request[0]['id_MANAGER'], $request[0]['id_DOMAIN'], $request[0]['id_USER']);
+                return new Business($request[0]['id_BUSINESS'], $request[0]['name_BUSINESS'], $request[0]['money_BUSINESS'], $request[0]['isMananged_BUSINESS'], $request[0]['id_MANAGER'], $request[0]['id_DOMAIN'], $request[0]['id_USER']);
             }
         }
 
@@ -28,7 +28,7 @@
 
             if(!empty($request)) {
                 foreach($request as $rows) {
-                    $collection[] = array('id_BUSINESS' => $rows['id_BUSINESS'], 'name_BUSINESS' => $rows['name_BUSINESS'], 'money_BUSINESS' => $rows['money_BUSINESS'], 'income_BUSINESS' => $rows['income_BUSINESS'], 'ea_BUSINESS' => $rows['ea_BUSINESS'], 'isManaged_BUSINESS' => $rows['isManaged_BUSINESS'], 'id_DOMAIN' => $rows['id_DOMAIN']);
+                    $collection[] = array('id_BUSINESS' => $rows['id_BUSINESS'], 'name_BUSINESS' => $rows['name_BUSINESS'], 'money_BUSINESS' => $rows['money_BUSINESS'], 'isManaged_BUSINESS' => $rows['isManaged_BUSINESS'], 'id_DOMAIN' => $rows['id_DOMAIN']);
                 }
             }
 
@@ -39,7 +39,7 @@
             $request = self::prepare('SELECT * FROM BUSINESS WHERE id_MANAGER=:id', array(':id' => $managerid));
 
             if(!empty($request)) {
-                return new Business($request[0]['id_BUSINESS'], $request[0]['name_BUSINESS'], $request[0]['money_BUSINESS'], $request[0]['income_BUSINESS'], $request[0]['ea_BUSINESS'], $request[0]['wa_BUSINESS'], $request[0]['isMananged_BUSINESS'], $request[0]['id_MANAGER'], $request[0]['id_DOMAIN'], $request[0]['id_USER']);
+                return new Business($request[0]['id_BUSINESS'], $request[0]['name_BUSINESS'], $request[0]['money_BUSINESS'], $request[0]['isMananged_BUSINESS'], $request[0]['id_MANAGER'], $request[0]['id_DOMAIN'], $request[0]['id_USER']);
             }
         }
 
@@ -50,11 +50,44 @@
         }
 
         public static function businessAdd($domain, $name, $ea, $userid) {
-            $request = self::request('INSERT INTO BUSINESS(name_BUSINESS, money_BUSINESS, income_BUSINESS, ea_BUSINESS, wa_BUSINESS, isManaged_BUSINESS, id_DOMAIN, id_USER) VALUES (:name_BUSINESS, 0, 0, :ea_BUSINESS, 0, 0, :id_DOMAIN, :id_USER)', array(':name_BUSINESS' => $name, ':ea_BUSINESS' => $ea, ':id_DOMAIN' => $domain, ':id_USER' => $userid));
+            $request = self::request('INSERT INTO BUSINESS(name_BUSINESS, money_BUSINESS, isManaged_BUSINESS, id_DOMAIN, id_USER) VALUES (:name_BUSINESS, 0, 0, :id_DOMAIN, :id_USER)', array(':name_BUSINESS' => $name, ':id_DOMAIN' => $domain, ':id_USER' => $userid));
         }
 
         public static function businessSell($businessid) {
             $request = self::request('DELETE FROM BUSINESS WHERE id_BUSINESS=:id', array(':id' => $businessid));
+        }
+
+        public static function businessUpgradeIncome($businessid) {
+            $request = self::prepare('SELECT * FROM POSSEDER WHERE id_BUSINESS = :id_BUSINESS AND id_UPGRADE = :id_UPGRADE', array(':id_BUSINESS' => $businessid, ':id_UPGRADE' => 1));
+
+            if(empty($request)) {
+                $sub_request = self::request('INSERT INTO POSSEDER(id_BUSINESS, id_UPGRADE, level_UPGRADE) VALUES (:id, 1, 1)', array(':id' => $businessid));
+            } else {
+                $quality_amount = $request[0]['level_UPGRADE'] + 1;
+                $sub_request = self::request('UPDATE POSSEDER SET level_UPGRADE=:level_UPGRADE WHERE id_BUSINESS = :id_BUSINESS AND id_UPGRADE = :id_UPGRADE', array(':level_UPGRADE' => $quality_amount, ':id_BUSINESS' => $businessid, ':id_UPGRADE' => 1));
+            }
+        }
+        
+        public static function businessUpgradeQuality($businessid) {
+            $request = self::prepare('SELECT * FROM POSSEDER WHERE id_BUSINESS = :id_BUSINESS AND id_UPGRADE = :id_UPGRADE', array(':id_BUSINESS' => $businessid, ':id_UPGRADE' => 2));
+
+            if(empty($request)) {
+                $sub_request = self::request('INSERT INTO POSSEDER(id_BUSINESS, id_UPGRADE, level_UPGRADE) VALUES (:id, 2, 1)', array(':id' => $businessid));
+            } else {
+                $quality_amount = $request[0]['level_UPGRADE'] + 1;
+                $sub_request = self::request('UPDATE POSSEDER SET level_UPGRADE=:level_UPGRADE WHERE id_BUSINESS = :id_BUSINESS AND id_UPGRADE = :id_UPGRADE', array(':level_UPGRADE' => $quality_amount, ':id_BUSINESS' => $businessid, ':id_UPGRADE' => 2));
+            }
+        }
+
+        public static function businessUpgradeEmployee($businessid) {
+            $request = self::prepare('SELECT * FROM POSSEDER WHERE id_BUSINESS = :id_BUSINESS AND id_UPGRADE = :id_UPGRADE', array(':id_BUSINESS' => $businessid, ':id_UPGRADE' => 3));
+
+            if(empty($request)) {
+                $sub_request = self::request('INSERT INTO POSSEDER(id_BUSINESS, id_UPGRADE, level_UPGRADE) VALUES (:id, 3, 1)', array(':id' => $businessid));
+            } else {
+                $quality_amount = $request[0]['level_UPGRADE'] + 1;
+                $sub_request = self::request('UPDATE POSSEDER SET level_UPGRADE=:level_UPGRADE WHERE id_BUSINESS = :id_BUSINESS AND id_UPGRADE = :id_UPGRADE', array(':level_UPGRADE' => $quality_amount, ':id_BUSINESS' => $businessid, ':id_UPGRADE' => 3));
+            }
         }
 
         public static function businessGetMoney($businessid) {
@@ -72,5 +105,4 @@
             }
         }
     }
-//`id_BUSINESS`, `name_BUSINESS`, `money_BUSINESS`, `income_BUSINESS`, `ea_BUSINESS`, `wa_BUSINESS`, `isManaged_BUSINESS`, `id_MANAGER`, `id_DOMAIN`, `id_USER`
 ?>

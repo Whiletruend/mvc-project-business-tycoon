@@ -4,6 +4,7 @@
     use App\model\DomainAccess;
     use App\model\UpgradeAccess;
     use App\model\UserAccess;
+    use App\model\PossessAccess;
     
     #-> Class 'BusinessController'
     class BusinessController {
@@ -12,6 +13,7 @@
         private $businessList;
         private $domainList;
         private $upgradeList;
+        private $possessList;
         private static $buyingRecap = array();
         private static $msg = '';
 
@@ -23,6 +25,8 @@
             $this->businessList = $collection;
             $this->domainList = $collection_domain;
             $this->upgradeList = $collection_upgrades;
+
+            print_r($this->possessList);
 
             self::checkBuying();
             self::checkAcceptRecap();
@@ -81,6 +85,12 @@
             header('Location: ./?action=business_global');
         }
 
+        public static function getLevelByBusinessAndUpgradeID($businessid, $upgradeid) {
+            $level = PossessAccess::getLevelByBusinessAndUpgradeID($businessid, $upgradeid);
+
+            return $level;
+        }
+
         public static function sellBusiness($businessid) {
             $domain = BusinessAccess::businessGetDomainByID($businessid);
             $domaincost = DomainAccess::getDomainCostByID($domain);
@@ -90,6 +100,21 @@
             BusinessAccess::businessSell($businessid);
 
             header('Location: ./?action=business_global');
+        }
+
+        public static function upgradeEmployee($businessid) {
+            BusinessAccess::businessUpgradeEmployee($businessid);
+            header('Location: ./?action=business_upgrades');
+        }
+
+        public static function upgradeIncome($businessid) {
+            BusinessAccess::businessUpgradeIncome($businessid);
+            header('Location: ./?action=business_upgrades');
+        }
+
+        public static function upgradeQuality($businessid) {
+            BusinessAccess::businessUpgradeQuality($businessid);
+            header('Location: ./?action=business_upgrades');
         }
 
         public static function getInstance() {
