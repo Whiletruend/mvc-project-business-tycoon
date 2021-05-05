@@ -19,7 +19,7 @@ $i = 0; ?>
                     <h3><?= $val['name_BUSINESS']; ?></h3>
                     <h6 class='text-muted'>Domaine de l'entreprise: <strong><?= $this->domainList[$val['id_DOMAIN']]->getName(); ?></strong></h6>
                     <hr>
-                    <h6 style='font-weight: normal;'>Nom du directeur: <strong><?= $this->managerList[BusinessController::businessGetManagerID($val['id_BUSINESS'])] ?> "</strong></h6>";
+                    <h6 style='font-weight: normal;'>Nom du directeur: <strong><?= BusinessController::businessGetManagerID($val['id_BUSINESS']); ?></strong></h6>
                 </div>
             <?php } ?>
             <?php

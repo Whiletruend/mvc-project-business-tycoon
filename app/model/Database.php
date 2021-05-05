@@ -7,7 +7,7 @@
         # Variables
         private static $db = null;
         private static $host_DB = 'localhost';
-        private static $name_DB = 'project_mvc_test';
+        private static $name_DB = 'business_tycoon';
         private static $user_DB = 'root';
         private static $pass_DB = '';
 

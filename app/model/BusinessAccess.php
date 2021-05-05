@@ -49,7 +49,7 @@
             return $request[0]['TOTAL'];
         }
 
-        public static function businessAdd($domain, $name, $ea, $userid) {
+        public static function businessAdd($domain, $name, $userid) {
             $request = self::request('INSERT INTO BUSINESS(name_BUSINESS, money_BUSINESS, isManaged_BUSINESS, id_DOMAIN, id_USER) VALUES (:name_BUSINESS, 0, 0, :id_DOMAIN, :id_USER)', array(':name_BUSINESS' => $name, ':id_DOMAIN' => $domain, ':id_USER' => $userid));
         }
 

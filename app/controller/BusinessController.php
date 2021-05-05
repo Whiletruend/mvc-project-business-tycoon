@@ -71,10 +71,10 @@
                     $newMoney = $userMoney - $totalcost;
 
                     UserAccess::setUserMoneyByID($userID, $newMoney);
-                    BusinessAccess::businessAdd($domain, $name, $emp_amount, $userID);
+                    BusinessAccess::businessAdd($domain, $name, $userID);
 
                     $businessid = BusinessAccess::getBusinessIDByName($name);
-                    PossessAccess::possessAdd($businessid, 3, 1);
+                    PossessAccess::possessAdd($businessid, $emp_amount, 1);
                     
                     header('Location: ./?action=business_global');
                 } else {
@@ -101,9 +101,7 @@
                             $managerid = ManagerAccess::getManagerIDByName($nameManager);
                             BusinessAccess::addManager($managerid, $businessid);
 
-                            var_dump($managerid);
-                            var_dump($businessid);
-                            //header('Location: ./?action=business_managers');
+                            header('Location: ./?action=business_managers');
                         }
                     }
                 }

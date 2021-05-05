@@ -37,7 +37,12 @@
                 <h6 style='font-weight: normal;'>Nombre d'employés actifs: <strong><?= self::getLevelByBusinessAndUpgradeID($val['id_BUSINESS'], 3); ?></strong></h6>
                 <h6 style='font-weight: normal;'>Argent actuel de l'entreprise: <strong><?= number_format($val['money_BUSINESS']); ?>€</strong></h6>
                 <h6 style='font-weight: normal;'>Revenus/minutes de l'entreprise: <strong><?= self::getLevelByBusinessAndUpgradeID($val['id_BUSINESS'], 1); ?>€</strong></h6>
-                <a class='text-success' href='./?action=business_moneyget&id_BUSINESS=<?= $val['id_BUSINESS']; ?>'><button type="button" class="btn btn-outline-success float-right" id="businessMoney_get" data-toggle="tooltip" data-placement="left" title="Récupérer l'argent"><i class="fas fa-hand-holding-usd fa-lg"></i></button></a>
+                
+                <?php if($val['isManaged_BUSINESS']) { ?>
+                    <button type="button" class="btn btn-outline-success float-right" id="businessMoney_get" data-toggle="tooltip" data-placement="left" title="Récupérer l'argent" disabled><i class="fas fa-hand-holding-usd fa-lg"></i></button></a>
+                <?php } else { ?>
+                    <a class='text-success' href='./?action=business_moneyget&id_BUSINESS=<?= $val['id_BUSINESS']; ?>'><button type="button" class="btn btn-outline-success float-right" id="businessMoney_get" data-toggle="tooltip" data-placement="left" title="Récupérer l'argent"><i class="fas fa-hand-holding-usd fa-lg"></i></button></a>
+                <?php } ?>
                 <div class='p-2 float-right'></div>
                 <a class='text-success' href='./?action=business_upgrades'><button type="button" class="btn btn-outline-primary float-right" id="businessUpgrade_goto" data-toggle="tooltip" data-placement="left" title="Allez aux améliorations"><i class="bi bi-speedometer fa-lg"></i></button></a>
                 <div class='p-1'></div>
