@@ -13,5 +13,5 @@
 ![alt text](https://i.ibb.co/sHHH32s/MLD.png)
 
 
-```Diagramme de Classe (UML):```
+```Diagramme de Classes (UML) du Projet:```
 ![alt_text](https://i.ibb.co/xJPXWCN/UML.png)
